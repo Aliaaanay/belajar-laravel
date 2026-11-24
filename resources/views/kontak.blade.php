@@ -44,6 +44,10 @@
             <h3><span>✉️</span> Surat Elektronik</h3>
             <p>Akademik: baak@kampus.ac.id<br>Himpunan: himatif@kampus.ac.id</p>
         </div>
+        <div class="contact-box">
+            <h3><span>⏰</span> Jam Layanan</h3>
+            <p>Senin - Jumat: 08.00 - 16.00 WIB<br>Sabtu: 08.00 - 13.00 WIB</p>
+        </div>
     </div>
 
     <div class="nav-back">
