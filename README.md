@@ -41,7 +41,7 @@ Pastikan konfigurasi koneksi database di file `.env` sudah sesuai:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=ecommerce_git_18
+DB_DATABASE=belajar_laravel
 DB_USERNAME=root
 DB_PASSWORD=aliaunaa112005
 ```
