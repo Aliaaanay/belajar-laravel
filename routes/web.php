@@ -11,6 +11,7 @@ use App\Http\Controllers\QaTestingController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\EcommerceLaporanController;
+use App\Http\Controllers\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -161,3 +162,6 @@ Route::get('/kontak', function () {
 Route::get('/tentang', function () {
     return "Portal Akademik & E-Commerce Versi 1.1 - Belajar Laravel";
 });
+
+// Praktik 3 (Modul 18): Route Halaman Profil Mahasiswa (Cabang 'fitur-profil')
+Route::get('/profil', [ProfilController::class, 'index']);
