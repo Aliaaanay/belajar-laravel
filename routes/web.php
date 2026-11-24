@@ -156,3 +156,8 @@ Route::prefix('ecommerce/laporan')->group(function () {
 Route::get('/kontak', function () {
     return view('kontak');
 });
+
+// Praktik 2 (Modul 18): Route Halaman Tentang Kampus
+Route::get('/tentang', function () {
+    return "Portal Akademik & E-Commerce Versi 1.1 - Belajar Laravel";
+});
