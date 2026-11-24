@@ -10,8 +10,8 @@
 - **NIM:** 231011401822
 - **Kelas / Program Studi:** 07TPLP017 / Teknik Informatika
 - **Username GitHub:** [Aliaaanay](https://github.com/Aliaaanay)
-- **Nama Repositori:** `ecommerce-git-una` (atau `belajar-laravel`)
-- **Basis Data MySQL:** `ecommerce_git_18` (phpMyAdmin Laragon)
+- **Nama Repositori:** `belajar-laravel`
+- **Basis Data MySQL:** `belajar_laravel` (phpMyAdmin Laragon)
 
 ---
 
