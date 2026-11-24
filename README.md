@@ -1,58 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proyek Web Laravel Terpadu: Modul 13 s.d. 18
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web Laravel modern, lengkap, dan siap produksi yang dibangun untuk memenuhi seluruh tugas dan latihan mata kuliah **Pemrograman Web Lanjut** (Pertemuan 13 sampai 18), tersinkronisasi penuh dengan basis data **MySQL (phpMyAdmin) di Laragon**.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Identitas Pengembang
+- **Nama Mahasiswa:** Sabrina Luna
+- **Program Studi:** Teknik Informatika
+- **Mata Kuliah:** Pemrograman Web Lanjut
+- **Dosen Pengampu:** Septa, S.Kom., M.Kom.
+- **Repository:** `belajar-laravel`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Daftar Fitur Berdasarkan Pertemuan Modul
 
-## Learning Laravel
+### 1. Pertemuan 13: Arsitektur Model-View-Controller (MVC)
+- **Model Koleksi & Eloquent:** Model `Mahasiswa.php`, `MataKuliah.php`, dan `Laboratorium.php`.
+- **Controller:** Pengaturan alur data di `MahasiswaController`, `MataKuliahController`, `LaboratoriumController`.
+- **View Blade:** Penggunaan `@foreach`, `@if` predikat kelulusan (Cumlaude / Sangat Memuaskan), dan kartu inventaris.
+- **Rute:**
+  - `/mahasiswa` & `/mahasiswa/{nim}`
+  - `/matakuliah` & `/matakuliah/{kode}`
+  - `/laboratorium`, `/laboratorium/detail/{kode}`, `/laboratorium/status/{status}`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 2. Pertemuan 14: Autentikasi dan Otorisasi Multi-Role
+- **Multi-Role Middleware:** Middleware `CekRole.php` terdaftar sebagai alias `'role'`.
+- **Portal Akademik:** Role `admin` (akses `/panel-admin`) dan `mahasiswa` (akses `/krs-mahasiswa`).
+- **E-Perpustakaan:** Role `pustakawan` (akses `/perpus/kelola-buku`) dan `anggota` (akses `/perpus/pinjam-buku`).
+- **Rute:**
+  - `/login`, `/register`, `/dashboard`, `/logout`, `/panel-admin`, `/krs-mahasiswa`
+  - `/perpus/login`, `/perpus/register`, `/perpus/dashboard`, `/perpus/kelola-buku`, `/perpus/pinjam-buku`
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. Pertemuan 15: RESTful API & Web Client Consumer
+- **API Mahasiswa & Buku:** Endpoint JSON standar dengan format `{ status, data, message }` dan validasi HTTP 422.
+- **Web Client UI:** Integrasi AJAX / Fetch API langsung dari browser dengan render tabel dinamis.
+- **Rute:**
+  - Web Client: `/client-mahasiswa` & `/perpus/katalog-api`
+  - RESTful API: `/api/mahasiswa` (GET, POST) & `/api/buku` (GET, POST, GET {id})
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 4. Pertemuan 16: Quality Assurance, Error Handling, Debugging & Testing
+- **Try-Catch & Exception Handling:** Penanganan pembagian dengan nol (*DivisionByZeroError*), validasi stok habis, pembelian negatif.
+- **Jejak Audit Log:** Rekam jejak `Log::info()`, `Log::warning()`, dan `Log::error()` di `storage/logs/laravel.log`.
+- **Halaman Error Kustom:** `resources/views/errors/404.blade.php` dan `403.blade.php`.
+- **QA Dashboard Interaktif:** Route `/qa-testing` dan `/qa-dashboard` lengkap dengan *Interactive Test Runner* dan *Live Log Viewer*.
+- **Automated Testing:** 38 skenario uji lulus 100% PASS (`php artisan test`).
 
-## Agentic Development
+### 5. Pertemuan 17: Sistem Pelaporan (Reporting), Export PDF & Excel
+- **Export PDF Resmi:** Menggunakan library `barryvdh/laravel-dompdf` lengkap dengan Kop Surat resmi instansi, nomor dokumen, tanggal cetak, tabel rekapitulasi, dan kolom tanda tangan pengesahan.
+- **Export Excel / CSV Native:** Menggunakan `response()->streamDownload()` dengan penanda UTF-8 BOM (`\xEF\xBB\xBF`) dan delimiter titik-koma (`;`) untuk kompatibilitas penuh Microsoft Excel.
+- **Print-Friendly:** Aturan CSS `@media print` untuk menyembunyikan tombol aksi dan menu saat cetak browser.
+- **Rute:**
+  - Latihan 17: `/laporan`, `/laporan/pdf`, `/laporan/excel`
+  - Tugas Mandiri 17: `/ecommerce/laporan`, `/ecommerce/laporan/pdf`, `/ecommerce/laporan/excel`
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 6. Pertemuan 18: Version Control System (Git) & Kolaborasi
+- **Struktur Repositori:** Inisialisasi Git (`git init`), pengaturan `.gitignore` mengamankan `.env` dan `/vendor`.
+- **Branching & Merging:** Penerapan cabang fitur `fitur-kontak` dan `fitur-readme-dokumentasi` yang digabungkan kembali ke `main`.
+- **Halaman Kontak:** Rute `/kontak` hasil isolasi cabang fitur.
 
-```bash
-composer require laravel/boost --dev
+---
 
-php artisan boost:install
-```
+## Panduan Menjalankan Proyek di Lokal
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+1. **Jalankan Laragon:**
+   Pastikan web server **Apache** dan **MySQL** dalam status running.
 
-## Contributing
+2. **Konfigurasi Database (.env):**
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=belajar_laravel
+   DB_USERNAME=root
+   DB_PASSWORD=aliaunaa112005
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Migrasi & Seeding Data:**
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-## Code of Conduct
+4. **Jalankan Aplikasi:**
+   ```bash
+   php artisan serve
+   ```
+   Buka portal utama di browser: [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. **Jalankan Pengujian Otomatis:**
+   ```bash
+   php artisan test
+   ```
+   Seluruh 38 pengujian fitur akan berstatus **PASS (Hijau)**.
